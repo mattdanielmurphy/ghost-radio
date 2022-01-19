@@ -86,9 +86,9 @@ export default function Home() {
 					></div>
 				</div>
 			</main>
-			<Script id='load-radio-player'>
+			<Script id='load-radio-player' strategy='lazyOnload'>
 				{`
-          $('.radioplayer').radiocoPlayer()
+          document.querySelector('.radioplayer').radiocoPlayer()
         `}
 			</Script>
 
