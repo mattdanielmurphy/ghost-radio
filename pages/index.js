@@ -13,12 +13,14 @@ export default function Home() {
 	const [playing, setPlaying] = useState(false)
 	useEffect(() => {
 		const audio = document.querySelector('audio')
-		audio.addEventListener('playing', () => {
-			console.log('loaded')
-			setLoaded(true)
-			if (!muted) setPlaying(true)
-			if (waitingForLoad) setWaitingForLoad(false)
-		})
+		if (audio) {
+			audio.addEventListener('playing', () => {
+				console.log('loaded')
+				setLoaded(true)
+				if (!muted) setPlaying(true)
+				if (waitingForLoad) setWaitingForLoad(false)
+			})
+		}
 	}, [muted, waitingForLoad])
 	return (
 		<div className={styles.container}>
