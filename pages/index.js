@@ -40,11 +40,22 @@ export default function Home() {
 			/>
 
 			<main className={styles.main}>
-				<p>
-					<a href='https://ghostofnft.io'>Ghost of Frank Dukes</a> presents:
-				</p>
-				<h1>Ghost Radio</h1>
-				<div style={{ height: 100, display: 'flex' }}>
+				<h1
+					style={{
+						fontWeight: 'normal',
+						textTransform: 'uppercase',
+						letterSpacing: '.2em',
+					}}
+				>
+					Ghost Radio
+				</h1>
+				<Image
+					src='/ghost.png'
+					alt='Ghost of Frank Dukes ghost icon'
+					width={350 / 2}
+					height={350 / 2}
+				></Image>
+				<div style={{ marginTop: '1.3em', height: 50, display: 'flex' }}>
 					{waitingForLoad ? (
 						<Loader></Loader>
 					) : (
@@ -53,10 +64,13 @@ export default function Home() {
 								background: 'none',
 								color: 'black',
 								padding: '.4em .8em',
-								fontSize: '3em',
+								fontSize: '1em',
 								fontFamily: 'sans-serif',
 								fontStyle: 'italic',
+								letterSpacing: '.03em',
+								border: 'none',
 							}}
+							className={`button button--play ${!muted && 'button--active'}`}
 							onClick={(e) => {
 								const audio = document.querySelector('#radioco-radioplayer')
 								const muteState = !muted
@@ -65,7 +79,9 @@ export default function Home() {
 								if (!muteState && !loaded) setWaitingForLoad(true)
 							}}
 						>
-							{muted ? 'PLAY' : 'STOP'}
+							{/* {muted ? 'PLAY' : 'STOP'} */}
+							<div className='button__shape button__shape--one'></div>
+							<div className='button__shape button__shape--two'></div>
 						</button>
 					)}
 				</div>
@@ -94,7 +110,13 @@ export default function Home() {
         `}
 			</Script>
 
-			<footer className={styles.footer}>&copy; 2022 Adam Feeney</footer>
+			<footer className={styles.footer}>
+				<p>
+					Audio from the{' '}
+					<a href='https://ghostofnft.io'>Ghost of Frank Dukes NFT project</a>.
+					&copy; 2022 Adam Feeney
+				</p>
+			</footer>
 		</div>
 	)
 }
